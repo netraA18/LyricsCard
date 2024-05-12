@@ -1,33 +1,23 @@
-
-
 document.addEventListener('DOMContentLoaded', function () {
     var canvas = new fabric.Canvas('canvas');
 
-    var text = new fabric.IText('Hello!', {
-        fill: 'green',
-        editable: true
-    });
+    displayText(canvas, 'Song Name', 'black', 110, 25, 25);
+    displayText(canvas, 'Artist', 'black', 120, 57, 15);
+    displayText(canvas, 'lyrics', 'black', 30, 100, 20);
 
-    var rect = new fabric.Rect({
-        left: 100,
-        top: 100,
-        width: 20,
-        height: 10,
-        fill: 'red'
-        
-    });
-
-    canvas.add(text);
-    //fetchText(canvas, text);
-    // canvas.add(text);
 
 });
 
-// function fetchText(canvas, text) {
-//     canvas.add(text);
-//     console.log("Text: " + text.text);
-//     document.getElementById("testText").innerText = text.text;
-//     var htmlText = document.getElementById("testText").innerText;
-//     console.log("HTML TEXT: " + htmlText);
-//     // return text.text;
-// }
+function displayText(canvas, text, color, leftPos, topPos, fontSize) {
+    var textObject = new fabric.IText(text, {
+        fill: color,
+        editable: true,
+        left: leftPos,
+        fontStyle: 'bold',
+        top: topPos,
+        fontSize: fontSize
+    })
+
+    canvas.add(textObject);
+}
+
