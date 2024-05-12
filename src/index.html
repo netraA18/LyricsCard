@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyrics Card Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <script src="script.js"></script>
+    <header>
+        <div class="Header">
+            <h1>Lyrics Card Generator</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="Customization">
+            <h3>Card Color: </h3>
+            <input type="color" id="colorpicker" value="#01d3f4">
+            <h3 id="textColor">Text Color: </h3>
+            <input type="color" id="textcolorpicker" value="#000000">
+
+        </div>
+        <div class="SpotifyCard">
+
+
+            <div class="ContentCard">
+                <canvas id="canvas" width="295" height="295"></canvas>
+
+                <div class="ImageSection">
+
+                </div>
+                <!-- <div class="SpecificContent"> -->
+                    <p contenteditable="true" id="SongName">Song Name</p>
+                    <p contenteditable="true" id="ArtistName">Artist Name</p>
+                    <p contenteditable="true" id="lyrics">Replace this with lyrics</p>
+                   <p contenteditable="true" id="testText"></p>
+                <!-- </div> -->
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Website. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

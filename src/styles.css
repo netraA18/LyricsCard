@@ -34,16 +34,53 @@
 
 .ContentCard {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3); 
-    max-width: 285px;
-    max-height: 285px;
-    width: 285px;
-    height: 285px;
+    max-width: 295px;
+    max-height: 295px;
+    width: 295px;
+    height: 295px;
     text-align: center;
     border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
     position: relative;
     top: 55px;
+
+}
+
+.SpecificContent {
+    bottom: 10px;
+    left: 800px;
+}
+/* #SongName {
+    position: relative;
+    top: -80px;
+    left: 80px;
+    
+  
+    word-wrap: break-word;
+    width: 190px;
+    font-weight: bold;
+    font-size: 22px;
+} */
+
+#SongName{
+    position: relative;
+    bottom: 350px;
+}
+
+.ImageSection {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3); 
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    
+    margin-left: 10px;
+    margin-right: auto;
+    position: relative;
+    top: 10px;
+
+    
+
 }
 
 
