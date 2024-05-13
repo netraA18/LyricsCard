@@ -1,3 +1,5 @@
+let rgbV;
+
 document.addEventListener('DOMContentLoaded', function () {
     var canvas = new fabric.Canvas('canvas');
 
@@ -50,10 +52,27 @@ window.onload = function () {
     function changeColor(event) { 
             const card = document.querySelector(".ContentCard");
             card.style.backgroundColor = event.target.value;
-        
+            rgbV = hexTorgb(event.target.value);           
 
     }
 }
+
+function lightBackground() {
+    const outerCard = document.querySelector(".SpotifyCard");
+    const newColors = `rgba(${rgbV[0]}, ${rgbV[1]}, ${rgbV[2]}, 0.5`; 
+    outerCard.style.backgroundColor = newColors;
+
+}
+
+function randomBackground() {
+    const outerCard = document.querySelector(".SpotifyCard");
+    const newColors = `rgba(${rgbV[1]}, ${rgbV[2]}, ${rgbV[0]}, 0.8`; 
+    outerCard.style.backgroundColor = newColors;
+}
+
+function hexTorgb(hex) {
+    return ['0x' + hex[1] + hex[2] | 0, '0x' + hex[3] + hex[4] | 0, '0x' + hex[5] + hex[6] | 0];
+  }
 
 
 

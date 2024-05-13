@@ -33,7 +33,7 @@
 }
 
 .ContentCard {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.5); 
     max-width: 295px;
     max-height: 295px;
     width: 295px;
@@ -90,4 +90,11 @@ input[type="color"]::-webkit-color-swatch {
     border: none; 
     border-radius: 50%; 
     padding: 0; 
+}
+
+#lightBackgroundButton, #randomBackgroundButton {
+    position: relative;
+    top: 100px;
+    right: 400px;
+    margin-right: 60px;
 }
