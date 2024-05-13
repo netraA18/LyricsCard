@@ -21,3 +21,35 @@ function displayText(canvas, text, color, leftPos, topPos, fontSize) {
     canvas.add(textObject);
 }
 
+
+window.onload = function() { 
+    const value = document.getElementById("colorpicker").getAttribute("value");
+    const card = document.querySelector(".ContentCard");
+
+    card.style.backgroundColor = value;
+
+}
+
+window.onload = function () {
+    // const value = document.getElementById("colorpicker").getAttribute("value");
+    // const card = document.querySelector(".ContentCard");
+
+    // card.style.backgroundColor = value;
+
+    const colorPicker = document.querySelector('input[type=color]');
+    colorPicker.addEventListener("change", changeColor, false);
+
+    function changeColor(event) {
+       
+            
+            
+            const card = document.querySelector(".ContentCard");
+            card.style.backgroundColor = event.target.value;
+        
+
+    }
+}
+
+
+
+
