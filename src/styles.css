@@ -8,16 +8,81 @@
 }
 
 .Customization  {
-    font-size: 20px;
+    /* font-size: 20px;
     margin-left: 30px;
+    margin-top: 20px;
     position: relative;
     top: 100px;
+    display: flex; */
+    font-size: 20px;
+    
+    position: absolute; /* Change to absolute positioning */
+    top: 150px; /* Adjust the top position */
+    left: 20px; /* Adjust the left position */
     display: flex;
+}
+
+.Buttons {
+    position: absolute;
+    top: 170px;
+    left: 375px;
+   
+   
+}
+
+#lightBackgroundButton,
+#randomBackgroundButton, #sameBackgroundButton{
+    
+    width: 200px;
+    height: 100px;
+    margin-bottom: 20px; /* Adjust as needed */
 }
 
 #textColor {
     margin-left: 30px;
 }
+
+#changeFontSize {
+    /* position:static;
+    top: 20px;
+    right: 795px;
+    margin-right: 15px; */
+    
+    position: absolute;
+    top: 100px; /* Adjust the top position as needed */
+    left: 2%; /* Use a percentage value for horizontal positioning */
+    
+    /* margin-right: 15px; */
+    
+   
+    
+}
+
+#fontSizes {
+    position: absolute;
+    top: 127px;
+    /* right: 105px; */
+    left: 50%;
+    width: 50px;
+    height: 25px;
+}
+
+#imageFile {
+    position: absolute;
+    top: 200px;
+    margin-right: 15px;
+    /* right: 105px; */
+    left: 2%;
+}
+
+#imageFileUpload {
+    position: absolute;
+    top: 270px;
+    /* right: 1300px; */
+    left: 20%;
+
+}
+
 
 .SpotifyCard {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
@@ -25,11 +90,13 @@
     max-height: 400px;
     width: 400px;
     height: 400px;
-    text-align: center;
+    /* text-align: center; */
     border-radius: 10px;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top: 155px;
+    
+    left: 50%;
+    position: absolute;
+   
 }
 
 .ContentCard {
@@ -38,29 +105,35 @@
     max-height: 295px;
     width: 295px;
     height: 295px;
-    text-align: center;
+    /* text-align: center; */
     border-radius: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
+    /* margin-left: auto;
+    margin-right: auto; */
+    position: absolute;
     top: 55px;
-   
+    left: 13%;
+    z-index: 1;
 
 }
 
 
 
-.ImageSection {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3); 
-    width: 70px;
-    height: 70px;
-    text-align: center;
+#myImg {
     
-    margin-left: 10px;
-    margin-right: auto;
-    position: relative;
-    bottom: 285px;
-
+    
+    /* position: absolute;
+    top: 205px; */
+    /* right: 75px; */
+    /* left: 200%;
+    
+    z-index: 2; */
+    
+    position: absolute;
+    top: 200px; /* Adjust the top position to align with the top of .ContentCard */
+    left: 770px; /* Adjust the distance from the right side */
+    z-index: 2;
+    
+    
     
 
 }
@@ -74,7 +147,7 @@ input[type="color"] {
     border-radius: 50%; 
     outline: none; 
     cursor: pointer;
-    margin-left: 20px;
+    margin-left: 10px;
     position: relative;
     top: 15px;
     
@@ -92,9 +165,3 @@ input[type="color"]::-webkit-color-swatch {
     padding: 0; 
 }
 
-#lightBackgroundButton, #randomBackgroundButton {
-    position: relative;
-    top: 100px;
-    right: 400px;
-    margin-right: 60px;
-}

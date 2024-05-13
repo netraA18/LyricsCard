@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
     displayText(canvas, 'lyrics', 'black', 30, 100, 20);
 
     colorText(canvas);
+    fontSizeNew(canvas);
+    
 });
 
 
@@ -16,8 +18,7 @@ function colorText(canvas) {
     const textColorPicker = document.getElementById("textcolorpicker");
     textColorPicker.addEventListener("change", function(event) {
         changeTextColor(canvas, event.target.value);
-    }, false);
-   
+    }, false);  
 }
 
 
@@ -30,6 +31,30 @@ function changeTextColor(canvas, color) {
 
 }
 
+
+
+function fontSizeNew(canvas) {
+    
+    const textfontSize = document.getElementById("fontSizes");
+    textfontSize.addEventListener("change", function(event) {
+        changeFontSize(canvas, event.target.value);
+    }, false);
+
+   
+   
+}
+
+function changeFontSize(canvas, fontSize) {
+    canvas.getObjects('i-text').forEach(function(textItem) {
+        
+        if (textItem.text === "lyrics") {
+            textItem.set("fontSize", fontSize);
+        }
+       
+    });
+    canvas.renderAll();
+
+}
 
 function displayText(canvas, text, color, leftPos, topPos, fontSize) {
     var textObject = new fabric.IText(text, {
@@ -72,7 +97,22 @@ function randomBackground() {
 
 function hexTorgb(hex) {
     return ['0x' + hex[1] + hex[2] | 0, '0x' + hex[3] + hex[4] | 0, '0x' + hex[5] + hex[6] | 0];
-  }
+}
+
+
+window.addEventListener('load', function() {
+   this.document.querySelector('input[type="file"]').addEventListener('change', function() {
+    if (this.files && this.files[0]) {
+        var img = document.querySelector('img');
+        img.onload = () => {
+            URL.revokeObjectURL(img.src);  // no longer needed, free memory
+        }
+
+        img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+    }
+   })
+})
+
 
 
 
