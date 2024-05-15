@@ -24,7 +24,7 @@
 
 .Buttons {
     position: absolute;
-    top: 170px;
+    top: 150px;
     left: 375px;
    
    
@@ -38,8 +38,14 @@
     margin-bottom: 20px; /* Adjust as needed */
 }
 
+#downloadButton {
+    width: 200px;
+    height: 30px;
+   
+}
+
 #textColor {
-    margin-left: 30px;
+    margin-left: 20px;
 }
 
 #changeFontSize {
@@ -84,19 +90,49 @@
 }
 
 
+/* .SpotifyCard {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    max-height: 400px;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto; */
+    /* text-align: center;
+    border-radius: 10px;
+    margin-top: 155px;
+    
+    left: 50%; */
+    /* position: absolute;
+   
+} */
+
+/* .ContentCard {
+    box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.5); 
+    max-width: 295px;
+    max-height: 295px;
+    width: 295px;
+    height: 295px;
+    margin: 0 auto; */
+    /* text-align: center; */
+    /* border-radius: 10px; */
+    /* margin-left: auto;
+    margin-right: auto; */
+    /* position: absolute; */
+    /* top: 55px;
+    left: 13%; */
+    /* z-index: 1; */
+
+/* } */
 .SpotifyCard {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
     max-width: 400px;
     max-height: 400px;
     width: 400px;
     height: 400px;
-    /* text-align: center; */
-    border-radius: 10px;
-    margin-top: 155px;
+    margin-top: 165px;
+    margin-left: 650px;
     
-    left: 50%;
-    position: absolute;
-   
+    position: absolute; 
 }
 
 .ContentCard {
@@ -105,32 +141,21 @@
     max-height: 295px;
     width: 295px;
     height: 295px;
-    /* text-align: center; */
-    border-radius: 10px;
-    /* margin-left: auto;
-    margin-right: auto; */
-    position: absolute;
-    top: 55px;
-    left: 13%;
-    z-index: 1;
-
+    top: 50px;
+    margin-left: 55px;
+    
+    position: absolute; 
 }
 
 
 
-#myImg {
-    
-    
-    /* position: absolute;
-    top: 205px; */
-    /* right: 75px; */
-    /* left: 200%;
-    
-    z-index: 2; */
-    
+
+
+#myImg {    
     position: absolute;
-    top: 200px; /* Adjust the top position to align with the top of .ContentCard */
-    left: 770px; /* Adjust the distance from the right side */
+    top: 15px; /* Adjust the top position to align with the top of .ContentCard */
+    left: 58%; /* Center horizontally */
+    transform: translateX(-200%); 
     z-index: 2;
     
     

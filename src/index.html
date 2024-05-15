@@ -18,6 +18,10 @@
         </div>
     </header>
 
+    <!-- <div class="cards">
+        <canvas id="canvas" height="400" width="800"></canvas>
+    </div> -->
+
     <main>
         <div class="Customization">
             <h3>Card Color: </h3>
@@ -29,7 +33,9 @@
                 <button type="button" onclick="lightBackground()" id="lightBackgroundButton">Light Background Color</button>
                 <button type="button" onclick="randomBackground()" id="randomBackgroundButton">Random Background Color</button>
                 <button type="button" onclick="sameBackground()" id="sameBackgroundButton">Same Background Color</button>
+                <button type="button" onclick="download()" id="downloadButton">Download Card</button>
             </div>
+            
             
             <h4 id="changeFontSize">Font Size of Lyrics: </h4>
             <select name="fontSizes" id="fontSizes"> 
@@ -44,16 +50,19 @@
               </select>
             <h4 id="imageFile">Upload an image: </h4>
             <input type="file" id="imageFileUpload" accept="image/png, image/jpeg" />
+            
             </br>
-            <img id="myImg" width="75" height="70">
+            <!-- <img id="myImg" width="75" height="70"> -->
             
            
         </div>
         <div class="SpotifyCard">
+            <canvas id="canvas" height="400" width= "400"></canvas>
 
 
             <div class="ContentCard">
-                <canvas id="canvas" height="295" width: "295"></canvas>
+                <canvas id="canvas2" height="295" width= "295"></canvas>
+                <img id="myImg" width="75" height="70">
 
                 
                 
