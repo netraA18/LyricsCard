@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lyrics Card Generator</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" >
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Platypi&display=swap">
+    
+    
+    
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -50,10 +56,16 @@
               </select>
             <h4 id="imageFile">Upload an image: </h4>
             <input type="file" id="imageFileUpload" accept="image/png, image/jpeg" />
-            
-            </br>
-            <!-- <img id="myImg" width="75" height="70"> -->
-            
+            <h4 id="fontStyle">Font Style: </h4>
+            <select name="fontStyles" id="fontStyles"> 
+                <option value="" selected disabled hidden>Times New Roman</option>               
+                <option value="Pacifico">Pacifico</option>
+                <option value="Tangerine">Tangerine</option>
+                <option value="Briem Hand">Briem Hand</option>
+                <option value="Platypi">Platypi</option>
+                
+              </select>
+        
            
         </div>
         <div class="SpotifyCard">
@@ -72,7 +84,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 My Website. All rights reserved.</p>
+        <p id="footer">&copy; 2024 Lyrics Card Generator. All rights reserved.</p>
     </footer>
     <script src="script.js"></script>
 </body>

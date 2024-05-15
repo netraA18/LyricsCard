@@ -1,3 +1,5 @@
+
+
 let rgbV;
 let group;
 var canvas;
@@ -13,26 +15,28 @@ document.addEventListener('DOMContentLoaded', function () {
     displayText(canvasTwo, 'Artist', 'black', 120, 57, 15);
     displayText(canvasTwo, 'lyrics', 'black', 30, 100, 20);
 
+    
 
-    // squareColor(canvasTwo);
     setupSquareColor(canvasTwo);
     colorText(canvasTwo);
     fontSizeNew(canvasTwo);
+    setupFontStyles(canvasTwo);
+    
+
+    
 
 });
 
+
+
 function displayCard(canvasNumb, width, height, fill) {
 
-    var shadow = new fabric.Shadow({
-        color: 'gray',
-        blur: 2,
-    })
 
     var outerCards = new fabric.Rect({
         fill: fill,
         width: width,
         height: height,
-        shadow: shadow,
+
         rx: 3,
         ry: 3,
 
@@ -95,12 +99,31 @@ function displayText(canvasTwo, text, color, leftPos, topPos, fontSize) {
         fontStyle: 'bold',
         top: topPos,
         fontSize: fontSize,
+        
+       
 
     })
     // return textObject;
     canvasTwo.add(textObject);
 }
 
+function setupFontStyles(canvasTwo) {
+    console.log("INSIDE");
+    const fontStyles = document.getElementById("fontStyles");
+    fontStyles.addEventListener("change", function (event) {
+        console.log("ISNIDE CHANGE");
+        const newFontStyle = event.target.value;
+        console.log("FONT: " + newFontStyle);
+        canvasTwo.getObjects('i-text').forEach(function (textItem) {
+            textItem.set("fontFamily", newFontStyle);
+        })
+
+        canvasTwo.renderAll();
+
+        
+    }, false);
+    
+}
 
 
 function setupSquareColor(canvasTwo) {
@@ -110,13 +133,11 @@ function setupSquareColor(canvasTwo) {
         rgbV = hexTorgb(color);
         const rectangles = canvasTwo.getObjects('rect');
         console.log("LENGTH: " + rectangles.length);
-        try {
-            const blueRectangle = rectangles[0];
-            blueRectangle.set("fill", color);
-            canvasTwo.renderAll();
-        } catch (error) {
-            console.log(error);
-        }
+
+        const blueRectangle = rectangles[0];
+        blueRectangle.set("fill", color);
+        canvasTwo.renderAll();
+
     }, false);
 
 }
@@ -126,7 +147,7 @@ function lightBackground() {
     const newColors = `rgba(${rgbV[0]}, ${rgbV[1]}, ${rgbV[2]}, 0.5`;
 
     const rectangles = canvas.getObjects('rect');
-    
+
 
     const greenRect = rectangles[0];
     greenRect.set("fill", newColors);
@@ -134,10 +155,10 @@ function lightBackground() {
 }
 
 function randomBackground() {
-   
+
     const newColors = `rgba(${rgbV[1]}, ${rgbV[2]}, ${rgbV[0]}, 0.8`;
     const rectangles = canvas.getObjects('rect');
-    
+
 
     const greenRect = rectangles[0];
     greenRect.set("fill", newColors);
@@ -145,10 +166,10 @@ function randomBackground() {
 }
 
 function sameBackground() {
-    
+
     const newColors = `rgb(${rgbV[0]}, ${rgbV[1]}, ${rgbV[2]}`;
     const rectangles = canvas.getObjects('rect');
-    
+
 
     const greenRect = rectangles[0];
     greenRect.set("fill", newColors);
@@ -159,33 +180,30 @@ function hexTorgb(hex) {
     return ['0x' + hex[1] + hex[2] | 0, '0x' + hex[3] + hex[4] | 0, '0x' + hex[5] + hex[6] | 0];
 }
 
-
 function download() {
     var cardCanvas = document.getElementById("canvas");
+    var innerCardCanvas = document.getElementById("canvas2");
+    var cardImage = document.getElementById("myImg");
 
     var downloadCanvas = document.createElement('canvas');
+
     downloadCanvas.width = cardCanvas.width;
     downloadCanvas.height = cardCanvas.height;
     var ctx = downloadCanvas.getContext("2d");
 
-
     ctx.drawImage(cardCanvas, 0, 0);
+    ctx.drawImage(innerCardCanvas, 50, 50);
+    ctx.drawImage(cardImage, 70, 70, 75, 70);
 
 
     var dataUrl = downloadCanvas.toDataURL("image/jpeg");
-
 
     var link = document.createElement('a');
     link.download = 'card.jpg';
     link.href = dataUrl;
 
-
     document.body.appendChild(link);
-
-
     link.click();
-
-
     document.body.removeChild(link);
 }
 
