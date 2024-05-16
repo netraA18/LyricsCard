@@ -214,3 +214,10 @@ input[type="color"]::-webkit-color-swatch {
     font-size: 14px;
 }
 
+.Instructions {
+    position: absolute;
+    left: 60%;
+    top: 280px;
+    width: 300px;
+    text-wrap: stable;
+}

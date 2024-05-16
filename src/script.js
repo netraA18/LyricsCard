@@ -2,10 +2,12 @@ let rgbV;
 let group;
 var canvas;
 var canvasTwo;
+// var canvasLyrics;
 
 document.addEventListener('DOMContentLoaded', function () {
     canvas = new fabric.Canvas('canvas');
     canvasTwo = new fabric.Canvas('canvas2');
+    // canvasLyrics = new fabric.Canvas('canvas3');
     group = new fabric.Group();
 
     displayCard(canvas, 400, 400, 'white');
@@ -20,10 +22,6 @@ document.addEventListener('DOMContentLoaded', function () {
     colorText(canvasTwo);
     fontSizeNew(canvasTwo);
     
-    
-
-    
-
 });
 
 WebFont.load({
@@ -113,6 +111,7 @@ function displayText(canvasNumb, text, color, leftPos, topPos, fontSize) {
        
 
     })
+
     // return textObject;
     canvasNumb.add(textObject);
 }
