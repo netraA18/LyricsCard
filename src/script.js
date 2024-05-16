@@ -1,5 +1,5 @@
 let rgbV;
-let group;
+
 var canvas;
 var canvasTwo;
 // var canvasLyrics;
@@ -7,16 +7,13 @@ var canvasTwo;
 document.addEventListener('DOMContentLoaded', function () {
     canvas = new fabric.Canvas('canvas');
     canvasTwo = new fabric.Canvas('canvas2');
-    // canvasLyrics = new fabric.Canvas('canvas3');
-    group = new fabric.Group();
 
     displayCard(canvas, 400, 400, 'white');
     displayCard(canvasTwo, 295, 295, 'white');
-    displayText(canvasTwo, 'Song Name', 'black', 110, 25, 25);
-    displayText(canvasTwo, 'Artist', 'black', 120, 57, 15);
-    displayText(canvasTwo, 'lyrics', 'black', 30, 100, 20);
-
-    // setupFontStyles(canvasTwo);
+    displayText(canvasTwo, 'Song Name', 'black', 110, 25, 25, 'bold');
+    displayText(canvasTwo, 'Artist', 'black', 120, 57, 15, 'bold');
+    displayText(canvasTwo, 'lyrics', 'black', 30, 100, 20, 'bold');
+    displayText(canvasTwo, 'Spotify', 'black', 15, 270, 15, 'italic');
 
     setupSquareColor(canvasTwo);
     colorText(canvasTwo);
@@ -99,14 +96,14 @@ function changeFontSize(canvasNumb, fontSize) {
 
 }
 
-function displayText(canvasNumb, text, color, leftPos, topPos, fontSize) {
+function displayText(canvasNumb, text, color, leftPos, topPos, fontSize, fontStyle) {
     var textObject = new fabric.IText(text, {
         fill: color,
         editable: true,
-        left: leftPos,
-        fontStyle: 'bold',
+        left: leftPos,        
         top: topPos,
         fontSize: fontSize,
+        fontStyle: fontStyle,
         
        
 
@@ -184,15 +181,6 @@ function sameBackground() {
     canvas.renderAll();
 }
 
-function TangerineButton() {
-    console.log("INSIDE TANGERINE BUTTON");
-    canvasTwo.getObjects('i-text').forEach(function (textItem) {
-        console.log('INSIDE GET OBJECTS');
-        textItem.set("fontFamily", 'Tangerine');
-        console.log(textItem.fontFamily);
-    });
-    canvasTwo.renderAll();
-}
 
 function hexTorgb(hex) {
     return ['0x' + hex[1] + hex[2] | 0, '0x' + hex[3] + hex[4] | 0, '0x' + hex[5] + hex[6] | 0];
@@ -202,6 +190,8 @@ function download() {
     var cardCanvas = document.getElementById("canvas");
     var innerCardCanvas = document.getElementById("canvas2");
     var cardImage = document.getElementById("myImg");
+   
+   
 
     var downloadCanvas = document.createElement('canvas');
 
@@ -210,7 +200,7 @@ function download() {
     var ctx = downloadCanvas.getContext("2d");
 
     ctx.drawImage(cardCanvas, 0, 0);
-    ctx.drawImage(innerCardCanvas, 50, 50);
+    ctx.drawImage(innerCardCanvas, 100, 110);
     ctx.drawImage(cardImage, 70, 70, 75, 70);
 
 

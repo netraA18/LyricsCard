@@ -214,10 +214,24 @@ input[type="color"]::-webkit-color-swatch {
     font-size: 14px;
 }
 
-.Instructions {
-    position: absolute;
-    left: 60%;
-    top: 280px;
-    width: 300px;
-    text-wrap: stable;
+#instructions {
+    position: fixed;
+    left: 1090px;
+    top: 40%;
+    background-color: #e2ffef; /* light yellow background */
+    color: #0050a1; /* red font color */
+    padding: 1em; /* space around the text */
+    border-radius: 5px; /* rounded corners */
+    width: 60%; /* adjust as needed */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3); /* subtle shadow for depth */
+    max-width: 200px; /* maximum width */
 }
+
+#spotifylogo {
+    position: absolute;
+    top: 260px;
+    left: 3%;
+}
+
+
+
