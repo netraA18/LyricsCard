@@ -95,6 +95,12 @@
     left: 2%;
 }
 
+#fontStyles {
+    position: absolute;
+    top: 370px;
+    left: 20%;
+    height: 25px;
+}
 
 /* .SpotifyCard {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);

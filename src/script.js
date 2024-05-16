@@ -1,12 +1,11 @@
-
-
 let rgbV;
 let group;
 var canvas;
+var canvasTwo;
 
 document.addEventListener('DOMContentLoaded', function () {
     canvas = new fabric.Canvas('canvas');
-    var canvasTwo = new fabric.Canvas('canvas2');
+    canvasTwo = new fabric.Canvas('canvas2');
     group = new fabric.Group();
 
     displayCard(canvas, 400, 400, 'white');
@@ -15,17 +14,28 @@ document.addEventListener('DOMContentLoaded', function () {
     displayText(canvasTwo, 'Artist', 'black', 120, 57, 15);
     displayText(canvasTwo, 'lyrics', 'black', 30, 100, 20);
 
-    
+    // setupFontStyles(canvasTwo);
 
     setupSquareColor(canvasTwo);
     colorText(canvasTwo);
     fontSizeNew(canvasTwo);
-    setupFontStyles(canvasTwo);
+    
     
 
     
 
 });
+
+WebFont.load({
+    google: {
+      families: ['Tangerine', 'Platypi', 'Pacifico', 'Briem Hand']
+      
+    },
+    active: function() {
+        setupFontStyles(canvasTwo);
+    }
+  });
+  
 
 
 
@@ -48,50 +58,50 @@ function displayCard(canvasNumb, width, height, fill) {
 }
 
 
-function colorText(canvas) {
+function colorText(canvasNumb) {
 
     const textColorPicker = document.getElementById("textcolorpicker");
     textColorPicker.addEventListener("change", function (event) {
-        changeTextColor(canvas, event.target.value);
+        changeTextColor(canvasNumb, event.target.value);
     }, false);
 }
 
 
 
-function changeTextColor(canvas, color) {
-    canvas.getObjects('i-text').forEach(function (textItem) {
+function changeTextColor(canvasNumb, color) {
+    canvasNumb.getObjects('i-text').forEach(function (textItem) {
         textItem.set("fill", color);
     });
-    canvas.renderAll();
+    canvasNumb.renderAll();
 
 }
 
 
 
-function fontSizeNew(canvas) {
+function fontSizeNew(canvasNumb) {
 
     const textfontSize = document.getElementById("fontSizes");
     textfontSize.addEventListener("change", function (event) {
-        changeFontSize(canvas, event.target.value);
+        changeFontSize(canvasNumb, event.target.value);
     }, false);
 
 
 
 }
 
-function changeFontSize(canvas, fontSize) {
-    canvas.getObjects('i-text').forEach(function (textItem) {
+function changeFontSize(canvasNumb, fontSize) {
+    canvasNumb.getObjects('i-text').forEach(function (textItem) {
 
         if (textItem.text === "lyrics") {
             textItem.set("fontSize", fontSize);
         }
 
     });
-    canvas.renderAll();
+    canvasNumb.renderAll();
 
 }
 
-function displayText(canvasTwo, text, color, leftPos, topPos, fontSize) {
+function displayText(canvasNumb, text, color, leftPos, topPos, fontSize) {
     var textObject = new fabric.IText(text, {
         fill: color,
         editable: true,
@@ -104,39 +114,38 @@ function displayText(canvasTwo, text, color, leftPos, topPos, fontSize) {
 
     })
     // return textObject;
-    canvasTwo.add(textObject);
+    canvasNumb.add(textObject);
 }
 
-function setupFontStyles(canvasTwo) {
-    console.log("INSIDE");
+function setupFontStyles(canvasNumb) {
     const fontStyles = document.getElementById("fontStyles");
     fontStyles.addEventListener("change", function (event) {
-        console.log("ISNIDE CHANGE");
+        console.log("INSIDE CHANGE");
         const newFontStyle = event.target.value;
-        console.log("FONT: " + newFontStyle);
-        canvasTwo.getObjects('i-text').forEach(function (textItem) {
-            textItem.set("fontFamily", newFontStyle);
-        })
-
-        canvasTwo.renderAll();
-
         
+        canvasNumb.getObjects('i-text').forEach(function (textItem) {
+                
+            textItem.set("fontFamily", newFontStyle);
+           
+        })
+        canvasNumb.renderAll();
     }, false);
-    
+   
 }
 
 
-function setupSquareColor(canvasTwo) {
+
+function setupSquareColor(canvasNumb) {
     const colorPicker = document.querySelector('input[type=color]');
     colorPicker.addEventListener("change", function (event) {
         const color = event.target.value;
         rgbV = hexTorgb(color);
-        const rectangles = canvasTwo.getObjects('rect');
+        const rectangles = canvasNumb.getObjects('rect');
         console.log("LENGTH: " + rectangles.length);
 
         const blueRectangle = rectangles[0];
         blueRectangle.set("fill", color);
-        canvasTwo.renderAll();
+        canvasNumb.renderAll();
 
     }, false);
 
@@ -174,6 +183,16 @@ function sameBackground() {
     const greenRect = rectangles[0];
     greenRect.set("fill", newColors);
     canvas.renderAll();
+}
+
+function TangerineButton() {
+    console.log("INSIDE TANGERINE BUTTON");
+    canvasTwo.getObjects('i-text').forEach(function (textItem) {
+        console.log('INSIDE GET OBJECTS');
+        textItem.set("fontFamily", 'Tangerine');
+        console.log(textItem.fontFamily);
+    });
+    canvasTwo.renderAll();
 }
 
 function hexTorgb(hex) {
