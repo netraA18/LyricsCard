@@ -1,24 +1,21 @@
 let rgbV;
-
-var canvas;
-var canvasTwo;
-// var canvasLyrics;
+var outerCanvas;
+var innerCanvas;
 
 document.addEventListener('DOMContentLoaded', function () {
-    canvas = new fabric.Canvas('canvas');
-    canvasTwo = new fabric.Canvas('canvas2');
+    outerCanvas = new fabric.Canvas('outerCanvas');
+    innerCanvas = new fabric.Canvas('innerCanvas');
 
-    displayCard(canvas, 400, 400, 'white');
-    displayCard(canvasTwo, 295, 295, 'white');
-    displayText(canvasTwo, 'Song Name', 'black', 110, 25, 25, 'bold');
-    displayText(canvasTwo, 'Artist', 'black', 120, 57, 15, 'bold');
-    displayText(canvasTwo, 'lyrics', 'black', 30, 100, 20, 'bold');
-    displayText(canvasTwo, 'Spotify', 'black', 15, 270, 15, 'italic');
-
-    setupSquareColor(canvasTwo);
-    colorText(canvasTwo);
-    fontSizeNew(canvasTwo);
-    
+    displayCard(outerCanvas, 400, 400, 'white');
+    displayCard(innerCanvas, 295, 295, 'white');
+    displayText(innerCanvas, 'Song Name', 'black', 110, 25, 25, 'bold');
+    displayText(innerCanvas, 'Artist', 'black', 120, 57, 15, 'bold');
+    displayText(innerCanvas, 'Enter lyrics here', 'black', 30, 100, 20, 'bold');
+    displayText(innerCanvas, 'Spotify', 'black', 15, 270, 15, 'italic');
+  
+    setupSquareColor(innerCanvas);
+    colorText(innerCanvas);
+    fontSizeNew(innerCanvas);   
 });
 
 WebFont.load({
@@ -27,17 +24,12 @@ WebFont.load({
       
     },
     active: function() {
-        setupFontStyles(canvasTwo);
+        setupFontStyles(innerCanvas);
     }
   });
   
-
-
-
 function displayCard(canvasNumb, width, height, fill) {
-
-
-    var outerCards = new fabric.Rect({
+    var cards = new fabric.Rect({
         fill: fill,
         width: width,
         height: height,
@@ -47,9 +39,7 @@ function displayCard(canvasNumb, width, height, fill) {
 
     })
 
-    canvasNumb.add(outerCards);
-    console.log(`${canvasNumb}` + canvasNumb.getObjects());
-
+    canvasNumb.add(cards);
 }
 
 
@@ -103,9 +93,7 @@ function displayText(canvasNumb, text, color, leftPos, topPos, fontSize, fontSty
         left: leftPos,        
         top: topPos,
         fontSize: fontSize,
-        fontStyle: fontStyle,
-        
-       
+        fontStyle: fontStyle,    
 
     })
 
@@ -116,7 +104,6 @@ function displayText(canvasNumb, text, color, leftPos, topPos, fontSize, fontSty
 function setupFontStyles(canvasNumb) {
     const fontStyles = document.getElementById("fontStyles");
     fontStyles.addEventListener("change", function (event) {
-        console.log("INSIDE CHANGE");
         const newFontStyle = event.target.value;
         
         canvasNumb.getObjects('i-text').forEach(function (textItem) {
@@ -137,8 +124,6 @@ function setupSquareColor(canvasNumb) {
         const color = event.target.value;
         rgbV = hexTorgb(color);
         const rectangles = canvasNumb.getObjects('rect');
-        console.log("LENGTH: " + rectangles.length);
-
         const blueRectangle = rectangles[0];
         blueRectangle.set("fill", color);
         canvasNumb.renderAll();
@@ -151,34 +136,34 @@ function setupSquareColor(canvasNumb) {
 function lightBackground() {
     const newColors = `rgba(${rgbV[0]}, ${rgbV[1]}, ${rgbV[2]}, 0.5`;
 
-    const rectangles = canvas.getObjects('rect');
+    const rectangles = outerCanvas.getObjects('rect');
 
 
     const greenRect = rectangles[0];
     greenRect.set("fill", newColors);
-    canvas.renderAll();
+    outerCanvas.renderAll();
 }
 
 function randomBackground() {
 
     const newColors = `rgba(${rgbV[1]}, ${rgbV[2]}, ${rgbV[0]}, 0.8`;
-    const rectangles = canvas.getObjects('rect');
+    const rectangles = outerCanvas.getObjects('rect');
 
 
     const greenRect = rectangles[0];
     greenRect.set("fill", newColors);
-    canvas.renderAll();
+    outerCanvas.renderAll();
 }
 
 function sameBackground() {
 
     const newColors = `rgb(${rgbV[0]}, ${rgbV[1]}, ${rgbV[2]}`;
-    const rectangles = canvas.getObjects('rect');
+    const rectangles = outerCanvas.getObjects('rect');
 
 
     const greenRect = rectangles[0];
     greenRect.set("fill", newColors);
-    canvas.renderAll();
+    outerCanvas.renderAll();
 }
 
 
@@ -187,8 +172,8 @@ function hexTorgb(hex) {
 }
 
 function download() {
-    var cardCanvas = document.getElementById("canvas");
-    var innerCardCanvas = document.getElementById("canvas2");
+    var cardCanvas = document.getElementById("outerCanvas");
+    var innerCardCanvas = document.getElementById("innerCanvas");
     var cardImage = document.getElementById("myImg");
    
    
@@ -201,13 +186,13 @@ function download() {
 
     ctx.drawImage(cardCanvas, 0, 0);
     ctx.drawImage(innerCardCanvas, 100, 110);
-    ctx.drawImage(cardImage, 70, 70, 75, 70);
+    ctx.drawImage(cardImage, 145, 158, 125, 125);
 
 
     var dataUrl = downloadCanvas.toDataURL("image/jpeg");
 
     var link = document.createElement('a');
-    link.download = 'card.jpg';
+    link.download = 'spotifyCard.jpg';
     link.href = dataUrl;
 
     document.body.appendChild(link);
