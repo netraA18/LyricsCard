@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
     displayText(innerCanvas, 'Spotify', 'black', 15, 270, 15, 'italic');
   
     setupSquareColor(innerCanvas);
-    colorText(innerCanvas);
-    fontSizeNew(innerCanvas);   
+    setTextColor(innerCanvas);
+    setFontSize(innerCanvas);   
 });
 
 WebFont.load({
@@ -23,67 +23,69 @@ WebFont.load({
       families: ['Tangerine', 'Platypi', 'Pacifico', 'Briem Hand']
       
     },
+        /**
+         * Executes the setupFontStyles function with the innerCanvas as a parameter.
+         *
+         * @param {Object} innerCanvas - The canvas element on which the font styles will be set up.
+         */
     active: function() {
         setupFontStyles(innerCanvas);
     }
   });
   
+/**
+ * Displays a rectangle on the specified canvas with the specified width, height, and fill color.
+ * 
+ * @param {Fabric.Canvas} canvasNumb - The canvas on which the rectangle is to be displayed.
+ * @param {number} width - The width of the rectangle.
+ * @param {number} height - The height of the rectangle.
+ * @param {string} fill - The fill color of the rectangle.
+ */
 function displayCard(canvasNumb, width, height, fill) {
+    /**
+     * Creates a new fabric.Rect object with the specified properties and adds it to the canvas.
+     * @type {Fabric.Rect}
+     */
     var cards = new fabric.Rect({
-        fill: fill,
-        width: width,
-        height: height,
-
-        rx: 3,
+        fill: fill,       
+        width: width,        
+        height: height,        
+        rx: 3,       
         ry: 3,
-
     })
 
+    /**
+     * Adds the newly created rectangle object to the canvas.
+     */
     canvasNumb.add(cards);
 }
 
-
-function colorText(canvasNumb) {
-
+function setTextColor(canvasNumb) {
     const textColorPicker = document.getElementById("textcolorpicker");
-    textColorPicker.addEventListener("change", function (event) {
-        changeTextColor(canvasNumb, event.target.value);
-    }, false);
+    textColorPicker.addEventListener("change", function(event) {
+        const newTextColor = event.target.value;
+        canvasNumb.getObjects('i-text').forEach(function (textItem) {
+            textItem.set("fill", newTextColor);
+        });
+
+        canvasNumb.renderAll();
+
+    })
 }
 
 
+function setFontSize(canvasNumb) {
+    const textFontSize = document.getElementById("fontSizes");
+    textFontSize.addEventListener("change", function(event){
+        const newFontSize = event.target.value;
+        canvasNumb.getObjects('i-text').forEach(function (textItem) {
+            if (textItem.text === "Enter lyrics here") {
+                textItem.set("fontSize", newFontSize);
+            }
+        });
 
-function changeTextColor(canvasNumb, color) {
-    canvasNumb.getObjects('i-text').forEach(function (textItem) {
-        textItem.set("fill", color);
-    });
-    canvasNumb.renderAll();
-
-}
-
-
-
-function fontSizeNew(canvasNumb) {
-
-    const textfontSize = document.getElementById("fontSizes");
-    textfontSize.addEventListener("change", function (event) {
-        changeFontSize(canvasNumb, event.target.value);
-    }, false);
-
-
-
-}
-
-function changeFontSize(canvasNumb, fontSize) {
-    canvasNumb.getObjects('i-text').forEach(function (textItem) {
-
-        if (textItem.text === "lyrics") {
-            textItem.set("fontSize", fontSize);
-        }
-
-    });
-    canvasNumb.renderAll();
-
+        canvasNumb.renderAll();
+    })
 }
 
 function displayText(canvasNumb, text, color, leftPos, topPos, fontSize, fontStyle) {
@@ -96,8 +98,6 @@ function displayText(canvasNumb, text, color, leftPos, topPos, fontSize, fontSty
         fontStyle: fontStyle,    
 
     })
-
-    // return textObject;
     canvasNumb.add(textObject);
 }
 
@@ -117,7 +117,6 @@ function setupFontStyles(canvasNumb) {
 }
 
 
-
 function setupSquareColor(canvasNumb) {
     const colorPicker = document.querySelector('input[type=color]');
     colorPicker.addEventListener("change", function (event) {
@@ -132,62 +131,79 @@ function setupSquareColor(canvasNumb) {
 
 }
 
-
 function lightBackground() {
     const newColors = `rgba(${rgbV[0]}, ${rgbV[1]}, ${rgbV[2]}, 0.5`;
-
     const rectangles = outerCanvas.getObjects('rect');
-
-
-    const greenRect = rectangles[0];
-    greenRect.set("fill", newColors);
+    const selectedRect = rectangles[0];
+    selectedRect.set("fill", newColors);
     outerCanvas.renderAll();
 }
 
 function randomBackground() {
-
     const newColors = `rgba(${rgbV[1]}, ${rgbV[2]}, ${rgbV[0]}, 0.8`;
     const rectangles = outerCanvas.getObjects('rect');
-
-
-    const greenRect = rectangles[0];
-    greenRect.set("fill", newColors);
+    const selectedRect = rectangles[0];
+    selectedRect.set("fill", newColors);
     outerCanvas.renderAll();
 }
 
 function sameBackground() {
-
     const newColors = `rgb(${rgbV[0]}, ${rgbV[1]}, ${rgbV[2]}`;
     const rectangles = outerCanvas.getObjects('rect');
-
-
-    const greenRect = rectangles[0];
-    greenRect.set("fill", newColors);
+    const selectedRect = rectangles[0];
+    selectedRect.set("fill", newColors);
     outerCanvas.renderAll();
 }
 
 
+/**
+ * Converts a hex color string to an array of RGB values.
+ * 
+ * @param {string} hex - A hex color string in the format #RRGGBB
+ * @return {Array<number>} - An array of three numbers representing the RGB values.
+ * 
+ * @example
+ * const hex = '#FF0000';
+ * const rgb = hexTorgb(hex);
+ * // rgb is now [255, 0, 0]
+ */
 function hexTorgb(hex) {
-    return ['0x' + hex[1] + hex[2] | 0, '0x' + hex[3] + hex[4] | 0, '0x' + hex[5] + hex[6] | 0];
+    /**
+     * The RGB values are generated by taking the first two characters of the hex string
+     * and converting them to an integer using the bitwise OR operator. The bitwise
+     * OR operator converts the hex characters to a binary number and combines them
+     * with the value 0 (which is also a binary number). The result is a decimal
+     * number representing the RGB value.
+     */
+    return [
+        '0x' + hex[1] + hex[2] | 0,
+        '0x' + hex[3] + hex[4] | 0,
+        '0x' + hex[5] + hex[6] | 0
+    ];
 }
 
+
+/**
+ * Downloads an image of a Spotify card with customized content.
+ *
+ * @return {void} This function does not return anything.
+ */
 function download() {
     var cardCanvas = document.getElementById("outerCanvas");
     var innerCardCanvas = document.getElementById("innerCanvas");
     var cardImage = document.getElementById("myImg");
    
-   
-
     var downloadCanvas = document.createElement('canvas');
 
     downloadCanvas.width = cardCanvas.width;
     downloadCanvas.height = cardCanvas.height;
+
+    // Get the 2D drawing context of the download canvas
     var ctx = downloadCanvas.getContext("2d");
 
     ctx.drawImage(cardCanvas, 0, 0);
     ctx.drawImage(innerCardCanvas, 100, 110);
     ctx.drawImage(cardImage, 145, 158, 125, 125);
-
 
     var dataUrl = downloadCanvas.toDataURL("image/jpeg");
 
@@ -204,19 +220,18 @@ window.addEventListener('load', function () {
     this.document.querySelector('input[type="file"]').addEventListener('change', function () {
         if (this.files && this.files[0]) {
             var img = document.querySelector('img');
+            /**
+             * Sets an onload event handler for the img element and revokes the object URL
+             * after the image has finished loading.
+             *
+             * @param {Event} event - The onload event object.
+             * @return {void} This function does not return anything.
+             */
             img.onload = () => {
-                URL.revokeObjectURL(img.src);  // no longer needed, free memory
+                URL.revokeObjectURL(img.src);  
             }
 
-            img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+            img.src = URL.createObjectURL(this.files[0]); 
         }
     })
 })
-
-
-
-
-
-
-
-

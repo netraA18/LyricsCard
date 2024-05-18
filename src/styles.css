@@ -2,40 +2,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     height: 10vh;
     background-color: #f5f5f5;
     border-bottom: 1px solid #ccc;
 }
 
 .Customization  {
-    /* font-size: 20px;
-    margin-left: 30px;
-    margin-top: 20px;
-    position: relative;
-    top: 100px;
-    display: flex; */
-    font-size: 20px;
-    
-    position: absolute; /* Change to absolute positioning */
-    top: 150px; /* Adjust the top position */
-    left: 20px; /* Adjust the left position */
+    font-size: 20px;  
+    position: absolute; 
+    top: 150px;
+    left: 20px; 
     display: flex;
 }
 
 .Buttons {
     position: absolute;
     top: 150px;
-    left: 375px;
-   
-   
+    left: 375px;  
 }
 
 #lightBackgroundButton,
-#randomBackgroundButton, #sameBackgroundButton{
-    
+#randomBackgroundButton, #sameBackgroundButton{ 
     width: 200px;
     height: 100px;
-    margin-bottom: 20px; /* Adjust as needed */
+    margin-bottom: 20px; 
 }
 
 #downloadButton {
@@ -48,26 +39,15 @@
     margin-left: 20px;
 }
 
-#changeFontSize {
-    /* position:static;
-    top: 20px;
-    right: 795px;
-    margin-right: 15px; */
-    
+#changeFontSize {  
     position: absolute;
-    top: 100px; /* Adjust the top position as needed */
-    left: 2%; /* Use a percentage value for horizontal positioning */
-    
-    /* margin-right: 15px; */
-    
-   
-    
+    top: 100px; 
+    left: 2%;  
 }
 
 #fontSizes {
     position: absolute;
     top: 127px;
-    /* right: 105px; */
     left: 50%;
     width: 50px;
     height: 25px;
@@ -77,16 +57,13 @@
     position: absolute;
     top: 200px;
     margin-right: 15px;
-    /* right: 105px; */
     left: 2%;
 }
 
 #imageFileUpload {
     position: absolute;
     top: 270px;
-    /* right: 1300px; */
     left: 20%;
-
 }
 
 #fontStyle {
@@ -102,39 +79,6 @@
     height: 25px;
 }
 
-/* .SpotifyCard {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
-    max-width: 400px;
-    max-height: 400px;
-    width: 400px;
-    height: 400px;
-    margin: 0 auto; */
-    /* text-align: center;
-    border-radius: 10px;
-    margin-top: 155px;
-    
-    left: 50%; */
-    /* position: absolute;
-   
-} */
-
-/* .ContentCard {
-    box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.5); 
-    max-width: 295px;
-    max-height: 295px;
-    width: 295px;
-    height: 295px;
-    margin: 0 auto; */
-    /* text-align: center; */
-    /* border-radius: 10px; */
-    /* margin-left: auto;
-    margin-right: auto; */
-    /* position: absolute; */
-    /* top: 55px;
-    left: 13%; */
-    /* z-index: 1; */
-
-/* } */
 .SpotifyCard {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
     max-width: 400px;
@@ -143,7 +87,6 @@
     height: 400px;
     margin-top: 165px;
     margin-left: 650px;
-    
     position: absolute; 
 }
 
@@ -154,25 +97,16 @@
     width: 295px;
     height: 295px;
     top: 50px;
-    margin-left: 55px;
-    
+    margin-left: 55px; 
     position: absolute; 
 }
 
-
-
-
-
 #myImg {    
     position: absolute;
-    top: 15px; /* Adjust the top position to align with the top of .ContentCard */
-    left: 58%; /* Center horizontally */
+    top: 15px;
+    left: 58%; 
     transform: translateX(-200%); 
     z-index: 2;
-    
-    
-    
-
 }
 
 
@@ -186,9 +120,7 @@ input[type="color"] {
     cursor: pointer;
     margin-left: 10px;
     position: relative;
-    top: 15px;
-    
-    
+    top: 15px;  
 }
 
 
@@ -218,13 +150,13 @@ input[type="color"]::-webkit-color-swatch {
     position: fixed;
     left: 1090px;
     top: 40%;
-    background-color: #e2ffef; /* light yellow background */
-    color: #0050a1; /* red font color */
-    padding: 1em; /* space around the text */
-    border-radius: 5px; /* rounded corners */
-    width: 60%; /* adjust as needed */
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3); /* subtle shadow for depth */
-    max-width: 200px; /* maximum width */
+    background-color: #e2ffef; 
+    color: #0050a1; 
+    padding: 1em; 
+    border-radius: 5px;
+    width: 60%; 
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3); 
+    max-width: 200px; 
 }
 
 #spotifylogo {
