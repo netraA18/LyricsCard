@@ -1,6 +1,8 @@
-let rgbV;
+var rgbV;
 var outerCanvas;
 var innerCanvas;
+var lyricsStatus;
+
 
 document.addEventListener('DOMContentLoaded', function () {
     outerCanvas = new fabric.Canvas('outerCanvas');
@@ -46,12 +48,19 @@ function displayCard(canvasNumb, width, height, fill) {
      * Creates a new fabric.Rect object with the specified properties and adds it to the canvas.
      * @type {Fabric.Rect}
      */
+
+    
     var cards = new fabric.Rect({
         fill: fill,       
         width: width,        
         height: height,        
-        rx: 3,       
-        ry: 3,
+        rx: 8,       
+        ry: 8,
+        
+        stroke: 'gray', 
+        strokeWidth: 1,
+        
+        
     })
 
     /**
@@ -75,13 +84,14 @@ function setTextColor(canvasNumb) {
 
 
 function setFontSize(canvasNumb) {
+    
     const textFontSize = document.getElementById("fontSizes");
     textFontSize.addEventListener("change", function(event){
         const newFontSize = event.target.value;
-        canvasNumb.getObjects('i-text').forEach(function (textItem) {
-            if (textItem.text === "Enter lyrics here") {
-                textItem.set("fontSize", newFontSize);
-            }
+        canvasNumb.getObjects('i-text').forEach(function (textItem) {                    
+            canvasNumb.getActiveObject().set("fontSize", newFontSize);
+          
+                
         });
 
         canvasNumb.renderAll();
@@ -89,6 +99,8 @@ function setFontSize(canvasNumb) {
 }
 
 function displayText(canvasNumb, text, color, leftPos, topPos, fontSize, fontStyle) {
+    
+
     var textObject = new fabric.IText(text, {
         fill: color,
         editable: true,
@@ -97,8 +109,14 @@ function displayText(canvasNumb, text, color, leftPos, topPos, fontSize, fontSty
         fontSize: fontSize,
         fontStyle: fontStyle,    
 
+
     })
+
+
     canvasNumb.add(textObject);
+
+    
+    
 }
 
 function setupFontStyles(canvasNumb) {
