@@ -56,7 +56,6 @@ function displayCard(canvasNumb, width, height, fill) {
         height: height,        
         rx: 8,       
         ry: 8,
-        
         stroke: 'gray', 
         strokeWidth: 1,
         
@@ -208,6 +207,9 @@ function hexTorgb(hex) {
  */
 function download() {
     var cardCanvas = document.getElementById("outerCanvas");
+
+    
+  
     var innerCardCanvas = document.getElementById("innerCanvas");
     var cardImage = document.getElementById("myImg");
    
@@ -218,6 +220,8 @@ function download() {
 
     // Get the 2D drawing context of the download canvas
     var ctx = downloadCanvas.getContext("2d");
+
+    cardCanvas.style.backgroundColor = "rgb(255, 0, 0)";
 
     ctx.drawImage(cardCanvas, 0, 0);
     ctx.drawImage(innerCardCanvas, 100, 110);
