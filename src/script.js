@@ -148,8 +148,9 @@ function setupSquareColor(canvasNumb) {
 
 }
 
-function lightBackground() {
-    const newColors = `rgba(${rgbV[0]}, ${rgbV[1]}, ${rgbV[2]}, 0.5`;
+function blackBackground() {
+    console.log("inside light");
+    const newColors = 'black';
     const rectangles = outerCanvas.getObjects('rect');
     const selectedRect = rectangles[0];
     selectedRect.set("fill", newColors);
@@ -157,7 +158,8 @@ function lightBackground() {
 }
 
 function randomBackground() {
-    const newColors = `rgba(${rgbV[1]}, ${rgbV[2]}, ${rgbV[0]}, 0.8`;
+    console.log("inside random background");
+    const newColors = `rgb(${rgbV[1]}, ${rgbV[2]}, ${rgbV[0]})`;
     const rectangles = outerCanvas.getObjects('rect');
     const selectedRect = rectangles[0];
     selectedRect.set("fill", newColors);
@@ -206,9 +208,8 @@ function hexTorgb(hex) {
  * @return {void} This function does not return anything.
  */
 function download() {
+    console.log("entered download");
     var cardCanvas = document.getElementById("outerCanvas");
-
-    
   
     var innerCardCanvas = document.getElementById("innerCanvas");
     var cardImage = document.getElementById("myImg");
@@ -220,12 +221,13 @@ function download() {
 
     // Get the 2D drawing context of the download canvas
     var ctx = downloadCanvas.getContext("2d");
-
-    cardCanvas.style.backgroundColor = "rgb(255, 0, 0)";
+       
 
     ctx.drawImage(cardCanvas, 0, 0);
     ctx.drawImage(innerCardCanvas, 100, 110);
     ctx.drawImage(cardImage, 145, 158, 125, 125);
+    
+
 
     var dataUrl = downloadCanvas.toDataURL("image/jpeg");
 
